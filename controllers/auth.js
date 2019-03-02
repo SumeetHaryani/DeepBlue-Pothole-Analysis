@@ -32,7 +32,7 @@ exports.postLogin = (req,res)=>{
 		const uid = user.uid;
 		console.log(uid);
 	}
-	res.redirect("/potholes");
+	res.redirect("/");
 }
 
 exports.postRegister = (req,res)=>{
@@ -48,7 +48,7 @@ exports.postRegister = (req,res)=>{
 			// Handle Errors here.
 			const errorCode = error.code;
 			const errorMessage = error.message;
-			return res.render("register");
+			return res.render("auth/register");
 			// ...
 		});
 	firebase.auth().onAuthStateChanged(function (user) {
@@ -74,7 +74,7 @@ exports.postRegister = (req,res)=>{
 	//     return res.render("register");
 	//   }
 
-	res.redirect("/potholes");
+	res.redirect("/");
 
 	// });
 }
@@ -86,7 +86,7 @@ exports.logout = (req,res)=>{
 		console.log(error.code);
 		console.log(error.message);
 	});
-	res.redirect("/potholes");
+	res.redirect("/");
 }
 
 function writeUserData(userId, name) {

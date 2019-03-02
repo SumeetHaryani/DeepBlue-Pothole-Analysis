@@ -1,6 +1,12 @@
 const firebase = require("firebase");
 
+
 exports.getDashboard = (req,res)=>{
-    const user = firebase.auth().currentUser;
+    // console.log(firebase.database().ref('/result'));
+    
+    firebase.database().ref('result').once('value').then(snapshot=>{
+        console.log(snapshot.val());
+        
+    })
 	res.render("index");
 }

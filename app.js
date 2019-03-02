@@ -24,9 +24,7 @@ app.use(methodOveride("_method"));
 // use expressSanitizer to sanitize the input given by user
 //app.use(expressSanitizer());
 
-app.get("/",(req,res)=>{
-	res.redirect('/potholes');
-})
+
 app.use("/", potholeRoutes);
 app.use("/",authRoutes);
 
