@@ -1,0 +1,27 @@
+{
+  "name": "pothole-web-app",
+  "version": "1.0.0",
+  "description": "Web app for Govt authorities to verify and update status of pothole",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SumeetHaryani/Pothole-Web-App.git"
+  },
+  "author": "Sumeet Haryani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SumeetHaryani/Pothole-Web-App/issues"
+  },
+  "homepage": "https://github.com/SumeetHaryani/Pothole-Web-App#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-sanitizer": "^1.0.5",
+    "firebase": "^5.8.4",
+    "method-override": "^3.0.0"
+  }
+}

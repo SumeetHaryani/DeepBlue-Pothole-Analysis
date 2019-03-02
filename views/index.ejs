@@ -1,0 +1,93 @@
+<% include partials/header %>
+<script>
+
+    function initialize() {
+        var input = document.getElementById('search');
+        var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'],componentRestrictions: {
+          country: "in"
+        }});
+        console.log(autocomplete.getPlace());
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            var place = autocomplete.getPlace();
+            console.log(place);
+
+
+
+        });
+
+    }
+
+   
+
+</script>
+<div class="container">
+    <header class="jumbotron">
+        <div class="container ">
+            <!--Search Bar-->
+            <p class="lead text-center ">Enter your Location</p>
+            <form class="form-inline justify-content-center" method="GET" action="">
+
+                <input id="search" class="form-control mr-sm-2" name="query" type="text" placeholder=" City/Town" size="50">
+                <button class="btn btn-outline-success  my-2 my-sm-0" type="submit">Find Potholes</button>
+            </form>
+
+        </div>
+        ejs
+    </header>
+    <!-- row is already in container -->
+    <div class="row">
+        <!-- foreach -->
+        <div class="col-md-4 col-lg-3">
+            <div class="card" ">
+                    <img src=" http://lorempixel.com/640/480/transport/" class="card-img-top"
+                alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="card">
+                <img src="http://lorempixel.com/640/480/transport/" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="card">
+                <img src="http://lorempixel.com/640/480/transport/" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+            <div class="card">
+                <img src="http://lorempixel.com/640/480/transport/" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+<% include partials/footer%>
