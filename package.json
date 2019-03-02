@@ -23,5 +23,8 @@
     "express-sanitizer": "^1.0.5",
     "firebase": "^5.8.4",
     "method-override": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
