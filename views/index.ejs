@@ -40,6 +40,7 @@
               <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Date</th>
+                <th scope="col">User's Name</th>
                 <th scope="col">City</th>
                 <th scope="col">Status</th>
                 <th scope="col">Image</th>
@@ -54,6 +55,8 @@
                     <tr>
                         <th scope="row"><%= index + 1 %> </th>
                         <td><%= complaint.date %></td>
+                        <td><%= complaint.user_name %></td>
+
                         <td><%= complaint.city %></td>
                         <td><%= complaint.status %></td>
                         <td><img src="<%= complaint.pic_url %>" width="100px" height="100px"/></td>

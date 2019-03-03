@@ -1,5 +1,11 @@
 <%- include('../partials/header') %>
-
+<style>
+    /* Google Maps */
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
 
 <div class="container">
     <div class="row">
@@ -26,12 +32,12 @@
           var lng = <%= pothole.longitude %>;
           var center = {lat: lat, lng: lng };
           var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 8,
+              zoom: 10,
               center: center,
               scrollwheel: false
           });
           var contentString = `
-            <strong><%= pothole.city %><br />
+            <strong><%= pothole.user_name %><br />
             
           `
           var infowindow = new google.maps.InfoWindow({
