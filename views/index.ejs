@@ -1,4 +1,4 @@
-<% include partials/header %>
+<%- include partials/header %>
 <script>
 
     function initialize() {
@@ -32,62 +32,47 @@
             </form>
 
         </div>
-        ejs
+        
     </header>
     <!-- row is already in container -->
-    <div class="row">
-        <!-- foreach -->
-        <div class="col-md-4 col-lg-3">
-            <div class="card" ">
-                    <img src=" http://lorempixel.com/640/480/transport/" class="card-img-top"
-                alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-3">
-            <div class="card">
-                <img src="http://lorempixel.com/640/480/transport/" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-3">
-            <div class="card">
-                <img src="http://lorempixel.com/640/480/transport/" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-3">
-            <div class="card">
-                <img src="http://lorempixel.com/640/480/transport/" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+    <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Date</th>
+                <th scope="col">User's Name</th>
+                <th scope="col">City</th>
+                <th scope="col">Status</th>
+                <th scope="col">Image</th>
+                <th scope="col">More</th>
 
-    </div>
+              </tr>
+            </thead>
+            <tbody>
+                <% if (complaints.length > 0){ %>
+                    <% complaints.forEach((complaint,index)=>{ %>
 
+                    <tr>
+                        <th scope="row"><%= index + 1 %> </th>
+                        <td><%= complaint.date %></td>
+                        <td><%= complaint.user_name %></td>
+
+                        <td><%= complaint.city %></td>
+                        <td><%= complaint.status %></td>
+                        <td><img src="<%= complaint.pic_url %>" width="100px" height="100px"/></td>
+                        <td><a href="potholes/<%= complaint.complaint_id %>">View More</a></td>
+
+                    </tr>
+                    <% }) %>
+                <% } %>
+
+    
+            </tbody>
+          </table>
+          
 
 
 
 </div>
 
-<% include partials/footer%>
+<%- include partials/footer %>
