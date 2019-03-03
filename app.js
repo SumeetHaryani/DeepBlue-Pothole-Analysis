@@ -1,14 +1,44 @@
-const bodyParser = require("body-parser"),
-	methodOveride = require("method-override"),
-	expressSanitizer = require("express-sanitizer"),
-	express = require("express"),
-	app = express(),
-	firebase = require("firebase");
-	database = require('./firebaseConfig');
-const authRoutes = require('./routes/auth');	//routes import
-	potholeRoutes = require("./routes/pothole");
+const bodyParser 			= require("body-parser"),
+	methodOveride 			= require("method-override"),
+	expressSanitizer 		= require("express-sanitizer"),
+	express 				= require("express"),
+	app 					= express(),
+	firebase 				= require("firebase");
+	database 				= require('./firebaseConfig'),
+	mongoose 				= require('mongoose'),
+	passport 				= require('passport'),
+	LocalStrategy         	= require("passport-local"),
+    passportLocalMongoose 	= require("passport-local-mongoose"),
+	 authRoutes 			= require('./routes/auth');	//routes import
+	potholeRoutes 			= require("./routes/pothole");
+	User					= require("./models/user");
 
+mongoose.connect("mongodb+srv://Saket:JWpQbkVHTaj0sAWK@nodejs-eoxdk.mongodb.net/PotholeWenApp",{ useNewUrlParser: true })
+	.then(result=>{
+		console.log("connected to mongodb");
+		
+	})
+	.catch(e=>{
+		console.log("error connecting mongo",e);
+		
+	})
+app.use(require("express-session")({
+		secret: "Rusty is the best and cutest dog in the world",
+		resave: false,
+		saveUninitialized: false
+}));
+	
+app.use(passport.initialize());
+app.use(passport.session());
+	
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
+app.use(function(req, res, next){
+	res.locals.currentUser = req.user;
+	next();
+ });
 // tell express to use "ejs" as our templating engine
 app.set("view engine", "ejs");
 //serve public directory

@@ -37,15 +37,24 @@
     </button>
 
     <ul class="nav navbar-nav ml-auto">
+          
+      <% if(!currentUser){ %>
+
       <li class="nav-item">
         <a class="nav-link" href="/register"><span class="fas fa-user"></span> Sign Up</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/login"><span class="fas fa-sign-in-alt"></span> Login</a>
       </li>
+      <% } else { %>
+      <li class="nav-item">
+            <a class="nav-link" href="#"><span class="fas fa-sign-in-alt"></span> Signed In As <%= currentUser.username %></a>
+        </li>
       <li class="nav-item">
         <a class="nav-link" href="/logout"><span class="fas fa-sign-in-alt"></span> Log out</a>
       </li>
+      <% } %>
+
     </ul>
   </nav>
 
