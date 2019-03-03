@@ -1,12 +1,42 @@
 const firebase = require("firebase");
-
+const db = firebase.database();
 
 exports.getDashboard = (req,res)=>{
-    // console.log(firebase.database().ref('/result'));
-    
-    firebase.database().ref('result').once('value').then(snapshot=>{
-        console.log(snapshot.val());
-        
+    complaints = []
+    firebase.database().ref('result').once('value')
+    .then(snapshot=>{
+        snapshot.forEach(childSnapshot=>{
+            childSnapshot.forEach((complaint)=>{
+
+                // db.ref().child('/userinfo/'+complaint.val().uid).once('value',(user)=>{
+                    
+                //     userData = user.val();
+                    
+                //     complaints.push({
+                //         complaint_id : complaint.key,
+                //         ...complaint.val(),
+                //         name : userData.name,
+                //         email: userData.email
+                //     });
+                // })
+                complaints.push({
+                
+                    complaint_id : complaint.key,
+                    ...complaint.val()
+                });
+                
+            });
+
+            console.log(complaints);
+            res.render("index",{
+                complaints:complaints
+            });
+            
+        });
+                
     })
-	res.render("index");
+    .catch(e=>{
+        console.log("error in fetching results",e);       
+    })
+            
 }
