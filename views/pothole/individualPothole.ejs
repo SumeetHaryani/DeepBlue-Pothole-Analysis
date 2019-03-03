@@ -14,16 +14,30 @@
           <div class="card" style="width: 18rem;">
                 <img src="<%= pothole.pic_url %>" alt="Lights" style="width:100%">
                 <div class="card-body">
-                  
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h3>Pothole Details :</h3>
+                    <ul class="list-group">
+                            <li class="list-group-item"><b>Number of Potholes</b>: <%= pothole.number_of_potholes %></li>
+                            <li class="list-group-item"><b>Area</b>: <%= pothole.pothole_area.toFixed(2) %> sqm</li>
+
+                    </ul>
                 </div>
               </div>
         </div>
         <div class="col-md-6">
             <div id = "map"></div>
+            <div>
+                
+            </div>
         </div>
         
       </div>
+      <!-- <br><br>
+      <div class="row">
+            <div class="col-md-12">
+              
+              Hello
+            
+        </div> -->
 </div>
 
 <script>
@@ -32,7 +46,7 @@
           var lng = <%= pothole.longitude %>;
           var center = {lat: lat, lng: lng };
           var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 10,
+              zoom: 20,
               center: center,
               scrollwheel: false
           });
