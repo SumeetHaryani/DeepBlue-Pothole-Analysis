@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.get("/", potholeController.getDashboard);
 
+router.get("/potholes/:pothole_id", potholeController.getIndividualPothole);
+
 module.exports = router;

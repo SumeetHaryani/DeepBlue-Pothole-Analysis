@@ -27,7 +27,7 @@ exports.getDashboard = (req,res)=>{
                 
             });
 
-            console.log(complaints);
+            // console.log(complaints);
             res.render("index",{
                 complaints:complaints
             });
@@ -39,4 +39,32 @@ exports.getDashboard = (req,res)=>{
         console.log("error in fetching results",e);       
     })
             
+}
+
+exports.getIndividualPothole = async (req,res)=>{
+    pid = req.params.pothole_id;
+
+    try{
+        const snapshot = await db.ref('result').once('value');
+        snapshot.forEach(childSnapshot=>{
+            childSnapshot.forEach(complaint=>{
+                complaint_id = complaint.key;
+                
+                if(complaint_id === pid){
+                    console.log(complaint.val());
+                    
+                    pothole = {
+                        complaint_id : complaint.key,
+                        ...complaint.val()
+                    }
+                    res.render('pothole/individualPothole',{
+                        pothole : pothole
+                    })
+                }
+            })
+        })
+    }catch(err){
+        console.log(err);
+        
+    }   
 }
