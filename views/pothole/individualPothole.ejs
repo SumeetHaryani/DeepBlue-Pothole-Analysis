@@ -18,6 +18,7 @@
                     <ul class="list-group">
                             <li class="list-group-item"><b>Number of Potholes</b>: <%= pothole.number_of_potholes %></li>
                             <li class="list-group-item"><b>Area</b>: <%= pothole.pothole_area.toFixed(2) %> sqm</li>
+                            <li class="list-group-item"><b>Status</b>: <%= pothole.status %> </li>
 
                     </ul>
                 </div>
@@ -25,9 +26,20 @@
         </div>
         <div class="col-md-6">
             <div id = "map"></div>
-            <div>
-                
-            </div>
+            <form action="/potholes/<%= pothole.uid %>/<%= pothole.complaint_id %>" method="POST">
+
+                <div class="form-group">
+                    <label for="status"><b>Select status</b></label>
+                        <select class="form-control" name="statusPicker" id="status">
+                            <option value="Unattended">Unattended</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Change Status</button>
+
+            </form>
+
         </div>
         
       </div>
@@ -65,7 +77,9 @@
             infowindow.open(map, marker);
           });
         }
+        
 </script>
+
 
   
 
