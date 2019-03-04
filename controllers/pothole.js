@@ -4,11 +4,11 @@ const db = firebase.database();
 exports.getDashboard = (req, res) => {
     var location = (req.query.city);
     var city = "";
-    // console.log(location);
+     //console.log(location);
     if (location != undefined) {
         city = capitalize(location.toLowerCase()).split(",")[0];
     }
-    //console.log(city);
+    console.log(city);
     complaints = []
     firebase.database().ref('result').once('value')
         .then(snapshot => {
@@ -26,7 +26,7 @@ exports.getDashboard = (req, res) => {
                     //         email: userData.email
                     //     });
                     // })
-                    console.log(complaint.val().location_add);
+                  //  console.log(complaint.val().location_add);
                     var address = complaint.val().location_add;
                     if (city != "" && address.includes(city)) {
 
@@ -96,7 +96,7 @@ exports.changeStatus = async (req,res)=>{
         status : status
     });
     return res.redirect('/potholes/'+complaint_id);
-
+}
   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

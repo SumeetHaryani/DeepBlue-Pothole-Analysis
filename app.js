@@ -13,7 +13,7 @@ const bodyParser 			= require("body-parser"),
 	potholeRoutes 			= require("./routes/pothole");
 	User					= require("./models/user");
 
-mongoose.connect("mongodb+srv://Saket:JWpQbkVHTaj0sAWK@nodejs-eoxdk.mongodb.net/PotholeWenApp",{ useNewUrlParser: true })
+mongoose.connect("mongodb://localhost:27017/PotholeWenApp",{ useNewUrlParser: true })
 	.then(result=>{
 		console.log("connected to mongodb");
 		
