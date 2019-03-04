@@ -9,7 +9,7 @@
         console.log(autocomplete.getPlace());
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
             var place = autocomplete.getPlace();
-            console.log(place);
+         //   console.log(place);
 
 
 
@@ -25,51 +25,70 @@
         <div class="container ">
             <!--Search Bar-->
             <p class="lead text-center ">Enter your Location</p>
-            <form class="form-inline justify-content-center" method="GET" action="">
+            <form class="form-inline justify-content-center" method="GET" action="/">
 
-                <input id="search" class="form-control mr-sm-2" name="query" type="text" placeholder=" City/Town" size="50">
+                <input id="search" class="form-control mr-sm-2" name="city" type="text" placeholder=" City/Town" size="50">
                 <button class="btn btn-outline-success  my-2 my-sm-0" type="submit">Find Potholes</button>
             </form>
 
         </div>
-        
+
     </header>
     <!-- row is already in container -->
+    <% if (complaints.length==0){ %>
+
+
+    <div class="alert alert-primary" role="alert">
+        No Potholes Found!
+    </div>
+    <%}%>
     <table class="table">
-            <thead class="thead-dark">
-              <tr>
+        <thead class="thead-dark">
+            <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Date</th>
                 <th scope="col">User's Name</th>
-                <th scope="col">City</th>
+                <th scope="col">Address</th>
                 <th scope="col">Status</th>
                 <th scope="col">Image</th>
                 <th scope="col">More</th>
 
-              </tr>
-            </thead>
-            <tbody>
-                <% if (complaints.length > 0){ %>
-                    <% complaints.forEach((complaint,index)=>{ %>
+            </tr>
+        </thead>
 
-                    <tr>
-                        <th scope="row"><%= index + 1 %> </th>
-                        <td><%= complaint.date %></td>
-                        <td><%= complaint.user_name %></td>
+        <tbody>
 
-                        <td><%= complaint.city %></td>
-                        <td><%= complaint.status %></td>
-                        <td><img src="<%= complaint.pic_url %>" width="100px" height="100px"/></td>
-                        <td><a href="potholes/<%= complaint.complaint_id %>">View More</a></td>
+            <% if (complaints.length > 0){ %>
+            <% complaints.forEach((complaint,index)=>{ %>
 
-                    </tr>
-                    <% }) %>
-                <% } %>
+            <tr>
+                <th scope="row">
+                    <%= index + 1 %>
+                </th>
+                <td>
+                    <%= complaint.date %>
+                </td>
+                <td>
+                    <%= complaint.user_name %>
+                </td>
 
-    
-            </tbody>
-          </table>
-          
+                <td>
+                    <%= complaint.location_add %>
+                </td>
+                <td>
+                    <%= complaint.status %>
+                </td>
+                <td><img src="<%= complaint.pic_url %>" width="100px" height="100px" /></td>
+                <td><a href="potholes/<%= complaint.complaint_id %>">View More</a></td>
+
+            </tr>
+            <% }) %>
+            <% } %>
+
+
+        </tbody>
+    </table>
+
 
 
 

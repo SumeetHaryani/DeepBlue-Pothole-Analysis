@@ -69,6 +69,6 @@ app.use("/",authRoutes);
 // );
 
 
-app.listen(3000, function () {
+app.listen(3001, function () {
 	console.log("Server has started at PORT 3000");
 });
