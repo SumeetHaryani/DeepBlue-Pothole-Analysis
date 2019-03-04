@@ -86,7 +86,17 @@ exports.getIndividualPothole = async (req, res) => {
 
     }
 }
+exports.changeStatus = async (req,res)=>{
+    const status = req.body.statusPicker;
+    const uid = req.params.uid;
+    const complaint_id = req.params.complaint_id;
+    console.log(complaint_id);
+    
+    const snapshot = await db.ref('result/'+uid+'/'+complaint_id).update({
+        status : status
+    });
+    return res.redirect('/potholes/'+complaint_id);
 
-function capitalize(string) {
+  function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
