@@ -4,11 +4,11 @@ const db = firebase.database();
 exports.getDashboard = (req, res) => {
     var location = (req.query.city);
     var city = "";
-    // console.log(location);
+    //console.log(location);
     if (location != undefined) {
         city = capitalize(location.toLowerCase()).split(",")[0];
     }
-    //console.log(city);
+    console.log(city);
     complaints = []
     firebase.database().ref('result').once('value')
         .then(snapshot => {
@@ -26,7 +26,7 @@ exports.getDashboard = (req, res) => {
                     //         email: userData.email
                     //     });
                     // })
-                    console.log(complaint.val().location_add);
+                    //  console.log(complaint.val().location_add);
                     var address = complaint.val().location_add;
                     if (city != "" && address.includes(city)) {
 
@@ -86,18 +86,28 @@ exports.getIndividualPothole = async (req, res) => {
 
     }
 }
+<<<<<<< HEAD
 
 exports.changeStatus = async (req,res)=>{
+=======
+exports.changeStatus = async (req, res) => {
+>>>>>>> upstream/master
     const status = req.body.statusPicker;
     const uid = req.params.uid;
     const complaint_id = req.params.complaint_id;
     console.log(complaint_id);
-    
-    const snapshot = await db.ref('result/'+uid+'/'+complaint_id).update({
-        status : status
+
+    const snapshot = await db.ref('result/' + uid + '/' + complaint_id).update({
+        status: status
     });
+<<<<<<< HEAD
     return res.redirect('/potholes/'+complaint_id);
 }
+=======
+    return res.redirect('/potholes/' + complaint_id);
+}
+
+>>>>>>> upstream/master
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
