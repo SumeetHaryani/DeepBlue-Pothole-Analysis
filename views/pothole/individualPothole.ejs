@@ -33,6 +33,21 @@
             <li class="list-group-item"><b>Status</b>:
               <%= pothole.status %>
             </li>
+            <li class="list-group-item"><b>Asphalt Required:</b>:
+              <% totalmass=function(value){ 
+                mass=value*0.04*0.002243; 
+                return mass;
+              }  
+              %>
+              <%= totalmass(pothole.pothole_area.toFixed(2)) %> kg
+            </li>
+            <li class="list-group-item"><b>Price Of Asphalt(per kg): </b>30 Rs
+            
+            </li>
+            <li class="list-group-item"><b>Cost Estimated:</b>:
+              <%= totalmass(pothole.pothole_area.toFixed(2))*30 %> Rs
+            </li>
+
 
           </ul>
           <form action="/potholes/<%= pothole.uid %>/<%= pothole.complaint_id %>" method="POST">
