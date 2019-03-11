@@ -2,8 +2,9 @@ const path = require('path');
 const express = require('express');
 const potholeController = require('../controllers/pothole');
 const router = express.Router();
+var app=express();
 
-router.get("/", potholeController.getDashboard);
+router.get("/potholes", potholeController.getDashboard);
 
 router.get("/potholes/:pothole_id", potholeController.getIndividualPothole);
 
