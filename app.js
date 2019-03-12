@@ -83,6 +83,6 @@ app.use("/", authRoutes);
 // );
 
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT,process.env.IP, function () {
 	console.log("Server has started at PORT 3000");
 });
