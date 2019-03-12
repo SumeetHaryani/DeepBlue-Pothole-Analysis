@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get("/login", authController.getLogin);
 
-router.post("/login",passport.authenticate("local", {
-    successRedirect: "/",
+router.post("/login", passport.authenticate("local", {
+    successRedirect: "/potholes",
     failureRedirect: "/login"
 }), authController.postLogin);
 
@@ -16,8 +16,8 @@ router.get("/register", authController.getRegister);
 
 router.post("/register", authController.postRegister);
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
         return next();
     }
     res.redirect("/login");

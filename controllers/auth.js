@@ -2,21 +2,22 @@ const User = require('../models/user');
 const passport = require('passport');
 
 
-
-
 //show sign up form
-exports.getRegister = (req,res)=>{
-	res.render("auth/register"); 
+exports.getRegister = (req, res) => {
+    res.render("auth/register");
 
 }
-exports.postRegister = (req,res)=>{
-	User.register(new User({username: req.body.username}), req.body.password, function(err, user){
-        if(err){
+exports.postRegister = (req, res) => {
+    User.register(new User({
+        name: req.body.name,
+        username: req.body.username
+    }), req.body.password, function (err, user) {
+        if (err) {
             console.log(err);
             return res.render('auth/register');
         }
-        passport.authenticate("local")(req, res, function(){
-           res.redirect("/login");
+        passport.authenticate("local")(req, res, function () {
+            res.redirect("/potholes");
         });
     });
 }
@@ -25,21 +26,18 @@ exports.postRegister = (req,res)=>{
 
 // LOGIN ROUTES
 //render login form
-exports.getLogin = (req,res)=>{
-	res.render("auth/login"); 
+exports.getLogin = (req, res) => {
+    res.render("auth/login");
 
 }
-exports.postLogin = (req,res)=>{
-	
+exports.postLogin = (req, res) => {
+
 }
 
 
 
-exports.logout = (req,res)=>{
-	req.logout();
+exports.logout = (req, res) => {
+    req.logout();
     res.redirect("/");
 
 }
-
-
-

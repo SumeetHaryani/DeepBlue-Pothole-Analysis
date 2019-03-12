@@ -28,6 +28,7 @@ exports.getDashboard = (req, res) => {
                     // })
                     //  console.log(complaint.val().location_add);
                     var address = complaint.val().location_add;
+
                     if (city != "" && address.includes(city)) {
 
                         complaints.push({
@@ -47,9 +48,9 @@ exports.getDashboard = (req, res) => {
                 });
 
                 //   console.log(complaints);
-              
+
             });
-            res.render("pothole/dashboard", {
+            res.render("pothole/index", {
                 complaints: complaints
             });
 
@@ -92,9 +93,10 @@ exports.changeStatus = async (req, res) => {
     const uid = req.params.uid;
     const complaint_id = req.params.complaint_id;
     console.log(complaint_id);
-
+    console.log("HH" + req.user.name);
     const snapshot = await db.ref('result/' + uid + '/' + complaint_id).update({
-        status: status
+        status: status,
+        authority_incharge: req.user.name
     });
     return res.redirect('/potholes/' + complaint_id);
 }
