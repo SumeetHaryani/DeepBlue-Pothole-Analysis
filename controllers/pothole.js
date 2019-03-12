@@ -15,18 +15,7 @@ exports.getDashboard = (req, res) => {
             snapshot.forEach(childSnapshot => {
                 childSnapshot.forEach((complaint) => {
 
-                    // db.ref().child('/userinfo/'+complaint.val().uid).once('value',(user)=>{
-
-                    //     userData = user.val();
-
-                    //     complaints.push({
-                    //         complaint_id : complaint.key,
-                    //         ...complaint.val(),
-                    //         name : userData.name,
-                    //         email: userData.email
-                    //     });
-                    // })
-                    //  console.log(complaint.val().location_add);
+                    
                     var address = complaint.val().location_add;
 
                     if (city != "" && address.includes(city)) {

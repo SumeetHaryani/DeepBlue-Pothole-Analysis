@@ -54,6 +54,7 @@
 
 
           </ul>
+          <% if(currentUser) { %>}
           <form action="/potholes/<%= pothole.uid %>/<%= pothole.complaint_id %>" method="POST">
 
             <div class="form-group">
@@ -69,6 +70,7 @@
             <button type="submit" class="btn btn-primary mb-2">Change Status</button>
 
           </form>
+          <% } %>
         </div>
       </div>
     </div>
