@@ -15,18 +15,7 @@ exports.getDashboard = (req, res) => {
             snapshot.forEach(childSnapshot => {
                 childSnapshot.forEach((complaint) => {
 
-                    // db.ref().child('/userinfo/'+complaint.val().uid).once('value',(user)=>{
-
-                    //     userData = user.val();
-
-                    //     complaints.push({
-                    //         complaint_id : complaint.key,
-                    //         ...complaint.val(),
-                    //         name : userData.name,
-                    //         email: userData.email
-                    //     });
-                    // })
-                    //  console.log(complaint.val().location_add);
+                    
                     var address = complaint.val().location_add;
                     if (city != "" && address.includes(city)) {
 
@@ -47,10 +36,11 @@ exports.getDashboard = (req, res) => {
                 });
 
                 //   console.log(complaints);
-                res.render("index", {
-                    complaints: complaints
-                });
+                
 
+            });
+            res.render("index", {
+                complaints: complaints
             });
 
         }).catch(e => {
@@ -86,12 +76,7 @@ exports.getIndividualPothole = async (req, res) => {
 
     }
 }
-<<<<<<< HEAD
-
-exports.changeStatus = async (req,res)=>{
-=======
 exports.changeStatus = async (req, res) => {
->>>>>>> upstream/master
     const status = req.body.statusPicker;
     const uid = req.params.uid;
     const complaint_id = req.params.complaint_id;
@@ -100,14 +85,9 @@ exports.changeStatus = async (req, res) => {
     const snapshot = await db.ref('result/' + uid + '/' + complaint_id).update({
         status: status
     });
-<<<<<<< HEAD
-    return res.redirect('/potholes/'+complaint_id);
-}
-=======
     return res.redirect('/potholes/' + complaint_id);
 }
 
->>>>>>> upstream/master
 function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
