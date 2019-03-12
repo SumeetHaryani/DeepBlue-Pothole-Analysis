@@ -1,114 +1,44 @@
 <%- include partials/header %>
-<script>
-
-    function initialize() {
-        var input = document.getElementById('search');
-        var autocomplete = new google.maps.places.Autocomplete(input, { types: ['(cities)'],componentRestrictions: {
-          country: "in"
-        }});
-        console.log(autocomplete.getPlace());
-        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            var place = autocomplete.getPlace();
-         //   console.log(place);
-        });
-
-    }
-
-   
-
-</script>
 <style>
-    .carousel-inner > .carousel-item > img { width:100%; height:400px; }</style>
-<div class="container-fluid" style="padding: 0px;">
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2016/07/30/00/03/winding-road-1556177_960_720.jpg"
-                    alt="First slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2014/04/27/00/43/traffic-332857_960_720.jpg"
-                    alt="Second slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="https://cdn.pixabay.com/photo/2014/07/01/12/35/taxi-cab-381233_960_720.jpg"
-                    alt="Third slide">
-            </div>
+    h1{
+        text-align: center;
+        padding-top: 40px;
+    }
+    .inside{
+        margin: 0px 38%;
+        padding-top: 40px;
+    }
+    a{ 
+        text-decoration: none;
+        color: white; 
+        }
+    .button{
+        margin-right: 40px;
+    }
+    button{
+        height: 38px;
+        width: 80px;
+        text-align: center;
+    }
+    .cont{
+        margin-top: 30px;
+        border: 1px solid #007bff;
+        padding-bottom: 40px;
+        background-color: whitesmoke;
+    }
+    a:hover{
+        border-bottom: 2px solid yellow;
+        color: white;
+    }
+</style>
+    <div class="cont container">
+        <h1>Pothole Web App</h1>
+        <div class="container inside">
+            <button class="button btn btn-primary"><a  href="/register">Register</a></button>
+            <button class="btn btn-primary"><a  href="/login">Login</a></button>
         </div>
     </div>
-    <div class="container" style="position: absolute;top: 30%">
-        <!--Search Bar-->
-        <h1 class=" text-center text-white">Enter your City</h1>
-        <form class="form-inline justify-content-center" method="GET" action="/">
-
-            <input id="search" class="form-control mr-sm-2" name="city" type="text" placeholder=" City/Town" size="50">
-            <button class="btn btn-primary  my-2 my-sm-0" type="submit">Find Potholes</button>
-        </form>
-
-    </div>
-</div>
-<br>
-<div class="container">
-
-
-    <!-- row is already in container -->
-    <% if (complaints.length==0){ %>
-
-
-    <div class="alert alert-primary" role="alert">
-        No Potholes Found!
-    </div>
-    <%}%>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Date</th>
-                <th scope="col">User's Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Status</th>
-                <th scope="col">Image</th>
-                <th scope="col">More</th>
-
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <% if (complaints.length > 0){ %>
-            <% complaints.forEach((complaint,index)=>{ %>
-
-            <tr>
-                <th scope="row">
-                    <%= index + 1 %>
-                </th>
-                <td>
-                    <%= complaint.date %>
-                </td>
-                <td>
-                    <%= complaint.user_name %>
-                </td>
-
-                <td>
-                    <%= complaint.location_add %>
-                </td>
-                <td>
-                    <%= complaint.status %>
-                </td>
-                <td><img src="<%= complaint.pic_url %>" width="100px" height="100px" /></td>
-                <td><a href="potholes/<%= complaint.complaint_id %>">View More</a></td>
-
-            </tr>
-            <% }) %>
-            <% } %>
-
-
-        </tbody>
-    </table>
 
 
 
-
-</div>
-
-<%- include partials/footer %>
+<%- include partials/footer %> 

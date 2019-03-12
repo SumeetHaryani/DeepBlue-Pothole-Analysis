@@ -36,12 +36,12 @@ exports.getDashboard = (req, res) => {
                 });
 
                 //   console.log(complaints);
-                
-
+              
             });
-            res.render("index", {
+            res.render("pothole/dashboard", {
                 complaints: complaints
             });
+
 
         }).catch(e => {
             console.log("error in fetching results", e);

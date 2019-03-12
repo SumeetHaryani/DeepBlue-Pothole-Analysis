@@ -11,7 +11,9 @@ const bodyParser 			= require("body-parser"),
     passportLocalMongoose 	= require("passport-local-mongoose"),
 	 authRoutes 			= require('./routes/auth');	//routes import
 	potholeRoutes 			= require("./routes/pothole");
+	homepageRoutes          = require("./routes/homepage");
 	User					= require("./models/user");
+
 
 mongoose.connect("mongodb://localhost:27017/PotholeWenApp",{ useNewUrlParser: true })
 	.then(result=>{
@@ -54,7 +56,7 @@ app.use(methodOveride("_method"));
 // use expressSanitizer to sanitize the input given by user
 //app.use(expressSanitizer());
 
-
+app.use("/",homepageRoutes);
 app.use("/", potholeRoutes);
 app.use("/",authRoutes);
 
