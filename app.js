@@ -25,7 +25,7 @@ app.use(express.static(__dirname + '/public'));
 //   client.close();
 // });
 
-mongoose.connect(process.env.MONGOLAB_URI, {
+mongoose.connect("mongodb+srv://sam:abcd123@cluster0-1uhjw.mongodb.net/test?retryWrites=true", {
 		useNewUrlParser: true
 	})
 	.then(result => {
