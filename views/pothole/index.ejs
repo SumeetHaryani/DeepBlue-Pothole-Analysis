@@ -11,21 +11,23 @@
             var place = autocomplete.getPlace();
          //   console.log(place);
         });
-
     }
-
-   
-
 </script>
 <style>
     .carousel-inner > .carousel-item > img { width:100%; height:500px; }
- form{
-     margin-left: 340px;
- }
+    @media (min-width: 576px){
+#frm{
+    margin-left:10%;
+}
+    }
+    #frm{
+        position: absolute;
+        top:40%;
+
+    }
  h1{
      text-align: center;
-     padding-left: 300px;
-     color: white;
+          color: white;
      margin-bottom: 20px;
  }
  table{
@@ -36,7 +38,7 @@
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Mumbai_BMC_headquarters_edit1.jpg"
+                <img class="d-block " src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Mumbai_BMC_headquarters_edit1.jpg"
                     alt="First slide">
             </div>
             <div class="carousel-item">
@@ -49,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="container" style="position: absolute;top: 30%">
+    <div id="frm" class="container">
         <!--Search Bar-->
         <h1>Enter your City</h1>
         <form class="form-inline justify-content-center" method="GET" action="/potholes">
@@ -61,62 +63,63 @@
     </div>
 </div>
 <br>
-<div id="list" class="container">
+<div id="list" class="container-fluid">
     <!-- row is already in container -->
     <% if (complaints.length==0){ %>
     <div class="alert alert-primary" role="alert">
         No Potholes Found!
     </div>
     <%}%>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Date</th>
-                <th scope="col">User's Name</th>
-                <th scope="col">Location</th>
-                <th scope="col">Status</th>
-                <th scope="col">Image</th>
-                <th scope="col">More</th>
+    <div class="table-responsive">
 
-            </tr>
-        </thead>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">User's Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">More</th>
 
-        <tbody>
+                </tr>
+            </thead>
 
-            <% if (complaints.length > 0  ){ %>
-            <% complaints.forEach((complaint,index)=>{ %>
-            <% if (complaint.status != 'Completed' ){ %>
-            <tr>
-                <th scope="row">
-                    <%= index + 1 %>
-                </th>
-                <td width=15%"">
-                    <%= complaint.date %>
-                </td>
-                <td>
-                    <%= complaint.user_name %>
-                </td>
+            <tbody>
 
-                <td width="20%">
-                    <%= complaint.location_add %>
-                </td>
-                <td>
-                    <%= complaint.status %>
-                </td>
-                <td><img src="<%= complaint.pic_url %>" width="100px" height="100px" /></td>
-                <td><a href="potholes/<%= complaint.complaint_id %>">View More</a></td>
+                <% if (complaints.length > 0  ){ %>
+                <% complaints.forEach((complaint,index)=>{ %>
+                <% if (complaint.status != 'Completed' ){ %>
+                <tr>
+                    <th scope="row">
+                        <%= index + 1 %>
+                    </th>
+                    <td>
+                        <%= complaint.date %>
+                    </td>
+                    <td>
+                        <%= complaint.user_name %>
+                    </td>
 
-            </tr>
-            <% } %>
-            <% }) %>
-            <% } %>
+                    <td>
+                        <%= complaint.location_add %>
+                    </td>
+                    <td>
+                        <%= complaint.status %>
+                    </td>
+                    <td><img src="<%= complaint.pic_url %>" width="100px" height="100px" /></td>
+                    <td><a href="potholes/<%= complaint.complaint_id %>">View More</a></td>
 
-
-        </tbody>
-    </table>
+                </tr>
+                <% } %>
+                <% }) %>
+                <% } %>
 
 
+            </tbody>
+        </table>
+    </div>
 
 
 </div>
