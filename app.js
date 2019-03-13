@@ -15,17 +15,7 @@ const bodyParser = require("body-parser"),
 	User = require("./models/user");
 
 app.use(express.static(__dirname + '/public'));
-
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://sam:123456@cluster0-1uhjw.mongodb.net/test?retryWrites=true";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-
-mongoose.connect("mongodb+srv://sam:abcd123@cluster0-1uhjw.mongodb.net/test?retryWrites=true", {
+mongoose.connect("YOUR_MONGOLAB_URI", {
 		useNewUrlParser: true
 	})
 	.then(result => {
