@@ -25,7 +25,7 @@ app.use(express.static(__dirname + '/public'));
 //   client.close();
 // });
 
-mongoose.connect("mongodb+srv://sam:abcd123@cluster0-1uhjw.mongodb.net/test?retryWrites=true", {
+mongoose.connect(process.env.MONGOLAB_URI, {
 		useNewUrlParser: true
 	})
 	.then(result => {
@@ -83,6 +83,6 @@ app.use("/", authRoutes);
 // );
 
 
-app.listen(process.env.PORT,process.env.IP, function () {
+app.listen(process.env.PORT||3000, function () {
 	console.log("Server has started at PORT 3000");
 });
