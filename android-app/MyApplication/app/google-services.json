@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1070942423558",
+    "firebase_url": "https://deep-blue-sample.firebaseio.com",
+    "project_id": "deep-blue-sample",
+    "storage_bucket": "deep-blue-sample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070942423558:android:345da6e6127b8386",
+        "android_client_info": {
+          "package_name": "com.example.sugamxp.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070942423558-720u3rcjlggsk5b2j8gf8vhav1kbimld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sugamxp.myapplication",
+            "certificate_hash": "c1bad2d90eee076fe603166c202069c2d973a6cf"
+          }
+        },
+        {
+          "client_id": "1070942423558-4ar65kcd9atp1venbaprot83qpl2qq29.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3PK-RZQqdwqXq2sOrn63gMXxmaQP_jlA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070942423558-4ar65kcd9atp1venbaprot83qpl2qq29.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

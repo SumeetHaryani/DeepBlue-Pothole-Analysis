@@ -1,0 +1,5 @@
+<resources>
+    <string name="google_maps_api_key">AIzaSyAMmGMOtcaH0pNORJMA43INflioNSTI1ZY</string>
+    <string name="app_name">Pothole Complaint</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
